@@ -1,0 +1,75 @@
+.form-signup {
+    width: 400px;
+    position: absolute;
+    top: 230px;
+    left: 37%;
+
+    &__title {
+        font-size: 18px;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+    }
+
+    &__fullName {
+        input {
+            border: none;
+            background: #F5F5F5;
+            padding: 20px 0;
+            padding-left: 20px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+    &__userName {
+        input {
+            border: none;
+            background: #F5F5F5;
+            padding: 20px 0;
+            padding-left: 20px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__email {
+        input {
+            border: none;
+            background: #F5F5F5;
+            padding: 20px 0;
+            padding-left: 20px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__password {
+        input {
+            border: none;
+            background: #F5F5F5;
+            padding: 20px 0;
+            padding-left: 20px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__submit {
+        width: 420px;
+        text-align: center;
+        border: none;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        background: black;
+        color: #646464;
+        font-weight: 700;
+    }
+    
+
+
+}

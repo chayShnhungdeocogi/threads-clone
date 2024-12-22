@@ -1,0 +1,43 @@
+.layout-login {
+    background: #fff;
+    &__image {
+        width: 90%;
+        margin-left: 60px;
+        img {
+            width: 100%;
+        }
+    }
+
+    // &__main {
+
+    // }
+
+    &__footer {
+        width: 100%;
+        height: 40px;
+        position: absolute;
+        bottom: 0;
+        font-size: 12px;
+        ul {
+            display: flex;
+            flex-wrap: nowrap;
+            list-style-type: none;
+            justify-content: center;
+            color: #9b9a9a;
+            li {
+                margin-right: 10px;
+
+                a {
+                    text-decoration: none;
+                    
+                }
+                a:visited {
+                    color: #9a9a9a;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
