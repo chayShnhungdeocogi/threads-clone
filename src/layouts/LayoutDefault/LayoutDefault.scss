@@ -8,6 +8,7 @@
         position: sticky;
         top: 0;
         background: white;
+        z-index: 1000;
     }
 
     &__logo {
@@ -51,6 +52,7 @@
         position: sticky;
         bottom: 0;
         font-size: 14px;
+        margin-left: -40px;
 
         ul {
             display: flex;
@@ -79,7 +81,7 @@
 }
 
 .menu {
-    margin-left: 300px;
+    margin-left: 210px;
     flex: 0.6;
 
     ul {
@@ -147,12 +149,15 @@
             background: white;
             border: 1px solid #dddd;
             display: none;
+
             ul {
                 flex-direction: column;
             }
+
             li {
                 font-size: 16px;
                 font-weight: 600;
+
                 a {
                     text-decoration: none;
                     color: #010101;
@@ -160,9 +165,87 @@
             }
         }
 
-        li:hover > &--sub{
+        li:hover>&--sub {
             display: flex;
         }
     }
 
+}
+
+.form-tag {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+
+    li {
+        margin-right: 10px;
+        font-size: 22px;
+    }
+}
+
+input#file-input {
+    display: none;
+}
+
+.form-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.form-user {
+    margin-top: 20px;
+    position: relative;
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .name {
+        position: absolute;
+        top: 0px;
+        left: 65px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.form-content {
+    margin-top: 15px;
+    margin-left: 60px;
+    input:focus-visible {
+        outline: none;
+    }
+
+    input {
+        width: 100%;
+        border: none;
+        font-size: 16px;
+    }
+}
+
+.form-tag {
+    margin-left: 60px;
+}
+.btnPost {
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 500px;
+}
+
+#imagePreview {
+    display: none;
+    max-width: 200px;
 }

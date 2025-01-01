@@ -1,0 +1,71 @@
+.layout-profile {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 383px;
+    .container {
+            position: relative;
+        }
+    
+        .full-name {
+            font-size: 22px;
+    
+            font-weight: 700;
+        }
+    
+        .user-name {
+            font-size: 16px;
+        }
+    
+        .followers {
+            margin-top: 40px;
+            color: #818181;
+        }
+    
+        .avatar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+    
+        .opt {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+    
+            span {
+                font-size: 30px;
+                margin-right: 10px;
+            }
+    
+            svg:hover {
+                cursor: pointer;
+                background: #ddd;
+                border-radius: 10px;
+            }
+        }
+}
+
+.post-header {
+    .opts {
+        span {
+            margin-right: 10px;
+            font-size: 18px;
+            svg {
+                padding: 2px;
+            }
+            svg:hover {
+                cursor: pointer;
+                background: #ddd;
+                border-radius: 5px;
+            }
+        }
+    }
+}

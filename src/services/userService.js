@@ -17,3 +17,14 @@ export const checkEmail = async (key, value) => {
 
 
 
+
+export const getUser = async () => {
+    const result = await get('users');
+    return result;
+}
+
+export const searchUser = async (params) => {
+    const result = await get(`users/seach?q=${params}`);
+    return result;
+}
+

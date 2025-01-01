@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import './Home.scss';
-import {  getPostList } from '../../services/postService';
-import { FaHandLizard, FaRegHeart } from "react-icons/fa";
+import {  getPostList, updatePostLikes } from '../../services/postService';
+import { FaRegHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
-import { useDispatch } from 'react-redux';
+
 function Home() {
 
     const [data, setData] = useState([]);
-
+    const [likePost, setLikePost] = useState([]);
     
 
     useEffect(() => {
@@ -19,7 +19,24 @@ function Home() {
     }, []);
 
     
-  
+    const handleClick = async (postId) => {
+        const post = data.find(item => item.id === postId);
+        if(!post) return;
+
+        const isLiked = likePost.includes(postId);
+
+        console.log(isLiked);
+
+        const newLikes = post.likes + (isLiked ? -1 : 1);
+
+        setLikePost(prev => isLiked ? prev.filter(item => item !== postId) : [...prev, postId]);
+
+        await updatePostLikes(postId, newLikes);
+        
+        setData(data.map(item => item.id === postId ? { ...item, likes: newLikes } : item));
+        
+    }
+    console.log(data);
     
     
     return (
@@ -61,8 +78,8 @@ function Home() {
 
                                 <div className="post-actions">
                                     <div className="action-buttons">
-                                        <button  className="action-btn">
-                                            <FaRegHeart />
+                                        <button onClick={() => handleClick(item.id)}  className="action-btn">
+                                            <FaRegHeart /> 
                                             <span>{item.likes}</span>
                                         </button>
                                         <button className="action-btn">

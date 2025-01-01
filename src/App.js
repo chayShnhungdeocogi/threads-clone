@@ -9,6 +9,9 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Logout from './pages/Logout';
+import Setting  from './pages/Setting';
+import Error  from './pages/Error';
+import Report  from './pages/Report';
 import PrivateRoutes from './components/PrivateRoutes';
 function App() {
   return (
@@ -20,6 +23,8 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path='activity' element={<Activity />} />
             <Route path='profile' element={<Profile />} />
+            <Route path='setting' element={<Setting />} />
+            
           </Route>
         </Route>
         <Route element={<LayoutLogSign />}>
@@ -27,6 +32,8 @@ function App() {
           <Route path='signup' element={<SignUp />} />
         </Route>
         <Route path='logout' element={<Logout />}/>
+        <Route path='report' element={<Report />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </>
   );
