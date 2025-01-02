@@ -1,0 +1,118 @@
+.comment-container {
+    max-width: 683px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-left: 383px;
+    border: 1px solid #dddd;
+    border-radius: 20px;
+    padding-bottom: 5px;
+}
+
+
+.comment-card {
+    margin-bottom: 10px;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 0;
+}
+
+.commnent-list {
+    position: relative;
+}
+
+.comment-header {
+    position: relative;
+
+    .user-details {
+        position: absolute;
+        top: 0;
+        left: 60px;
+    }
+}
+
+.comment-content {
+
+    .comment-text {
+        margin-left: 58px;
+        margin-top: -18px;
+    }
+}
+
+
+.react {
+    position: relative;
+
+    .react--item {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-left: 58px;
+        
+
+        .icon {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .likes {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+}
+
+
+
+
+.add-comment {
+    max-width: 683px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-left: 383px;
+    border: 1px solid #dddd;
+    border-radius: 20px;
+    margin-bottom: 20px;
+
+    .user {
+        position: relative;
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 1px solid black;
+        }
+
+        .user-name {
+            position: absolute;
+        }
+    }
+
+   
+}
+.content-comment {
+    input {
+        width: 80%;
+        margin-left: 50px;
+        border: none;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+
+}
+
+.btnComment {
+    margin-left: 90%;
+
+    button {
+        border: 1px solid #ddd;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}

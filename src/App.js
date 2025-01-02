@@ -13,6 +13,7 @@ import Setting  from './pages/Setting';
 import Error  from './pages/Error';
 import Report  from './pages/Report';
 import PrivateRoutes from './components/PrivateRoutes';
+import CommentOfUser from './pages/CommentOfUser';
 function App() {
   return (
     <>
@@ -24,7 +25,7 @@ function App() {
             <Route path='activity' element={<Activity />} />
             <Route path='profile' element={<Profile />} />
             <Route path='setting' element={<Setting />} />
-            
+            <Route path='/comment/:id' element={<CommentOfUser />} />
           </Route>
         </Route>
         <Route element={<LayoutLogSign />}>

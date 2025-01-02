@@ -1,44 +1,42 @@
 import { useEffect, useState } from 'react';
 import './Home.scss';
-import {  getPostList, updatePostLikes } from '../../services/postService';
+import { getPostList, updatePostLikes } from '../../services/postService';
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
-
+import { Link } from 'react-router-dom';
 function Home() {
 
     const [data, setData] = useState([]);
     const [likePost, setLikePost] = useState([]);
-    
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await getPostList();
-            setData(result);
+            setData(result.reverse());
         }
         fetchApi();
     }, []);
 
-    
+
+
     const handleClick = async (postId) => {
         const post = data.find(item => item.id === postId);
-        if(!post) return;
+        if (!post) return;
 
         const isLiked = likePost.includes(postId);
-
-        console.log(isLiked);
 
         const newLikes = post.likes + (isLiked ? -1 : 1);
 
         setLikePost(prev => isLiked ? prev.filter(item => item !== postId) : [...prev, postId]);
 
         await updatePostLikes(postId, newLikes);
-        
+
         setData(data.map(item => item.id === postId ? { ...item, likes: newLikes } : item));
-        
+
     }
-    console.log(data);
-    
-    
+
+
+
     return (
         <>
 
@@ -52,39 +50,39 @@ function Home() {
                                 <div className="post-header">
                                     <div className="post-user-info">
                                         <img
-                                            src="https://api.dicebear.com/6.x/avataaars/svg?seed=2"
+                                            src={item.avatar}
+                                            // get user avatar
                                             alt="user avatar"
                                             className="user-avatar"
                                         />
                                         <div className="user-details">
-                                            <span className="username">username</span>
+                                            <span className="username">{item.userName}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="post-content">
                                     <p className="post-text">
-                                       {item.content}
+                                        {item.content}
                                     </p>
                                     <div className='image'>
-                                    <img
-                                        src={item.image}
-                                        alt="post"
-                                        className="post-image"
-                                    />
+                                        <img
+                                            src={item.image}
+                                            alt="post"
+                                            className="post-image"
+                                        />
                                     </div>
-                                   
+
                                 </div>
 
                                 <div className="post-actions">
                                     <div className="action-buttons">
-                                        <button onClick={() => handleClick(item.id)}  className="action-btn">
-                                            <FaRegHeart /> 
+                                        <button onClick={() => handleClick(item.id)} className="action-btn">
+                                            <FaRegHeart />
                                             <span>{item.likes}</span>
                                         </button>
                                         <button className="action-btn">
-                                            <FaRegComment />
-                                            <span>{item.replies}</span>
+                                            <Link to={`/comment/${item.id}`}><FaRegComment /></Link>
                                         </button>
                                     </div>
                                 </div>

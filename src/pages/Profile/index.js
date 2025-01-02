@@ -129,12 +129,12 @@ function Profile() {
                                             <div className="post-header">
                                                 <div className="post-user-info">
                                                     <img
-                                                        src="https://api.dicebear.com/6.x/avataaars/svg?seed=2"
+                                                        src={user.avatar}
                                                         alt="user avatar"
                                                         className="user-avatar"
                                                     />
                                                     <div className="user-details">
-                                                        <span className="username">username</span>
+                                                        <span className="username">{user.userName}</span>
                                                     </div>
                                                 </div>
                                                 <div className='opts'>
@@ -164,7 +164,7 @@ function Profile() {
                                                     </button>
                                                     <button className="action-btn">
                                                         <FaRegComment />
-                                                        <span>{item.replies}</span>
+                                                        {/* <span>{item.replies}</span> */}
                                                     </button>
                                                 </div>
                                             </div>

@@ -11,16 +11,34 @@ import { getCookie } from '../../helpers/cookie';
 import Modal from 'react-modal';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPost } from '../../services/postService';
 import { CiImageOn } from "react-icons/ci";
 import { MdOutlineGifBox } from "react-icons/md";
 import { CiHashtag } from "react-icons/ci";
 import { MdOutlinePlace } from "react-icons/md";
+import { getUser } from '../../services/userService';
+
 function LayoutDefault() {
     const token = getCookie("token");
     const [showModal, setShowModal] = useState(false);
     const [data, setData] = useState([]);
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+
+        const fetchApi = async () => {
+            const result = await getUser();
+            result.map(item => {
+                if (item.token === token) {
+                    setUser(item);
+                }
+
+            })
+        }
+        fetchApi();
+    }, []);
+
+    
     const customStyles = {
         content: {
             top: '50%',
@@ -40,12 +58,23 @@ function LayoutDefault() {
     const handleChange = (e) => {
         e.preventDefault();
 
-        console.log(e);
-        
-        
-        
-        
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setData({
+            ...data,
+            [name]: value,
+            "userId": user.id,
+            "userName": user.userName,
+            "likes": 0,
+            "replies": 0,
+            "avatar": user.avatar,
+        })
+
+
     }
+
+
 
     const closeModal = () => {
         setShowModal(false);
@@ -59,6 +88,7 @@ function LayoutDefault() {
         const result = await createPost(data);
         if (result) {
             setShowModal(false);
+            window.location.reload();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -68,8 +98,6 @@ function LayoutDefault() {
             });
         }
     }
-    
-    
 
     return (
 
@@ -97,21 +125,22 @@ function LayoutDefault() {
                                     onRequestClose={closeModal}
                                     style={customStyles}
                                     contentLabel="Example Modal"
+                                    ariaHideApp={false}
                                 >
                                     <form onSubmit={handleSubmit}>
                                         <div className='container'>
                                             <div className='form-header'>New thread</div>
                                             <div className='form-user'>
-                                                <img src='https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg' alt='avatar' className='avatar' />
-                                                <span className='name'>user name</span>
+                                                <img src={user.avatar} alt='avatar' className='avatar' />
+                                                <span className='name'>{user.userName}</span>
                                             </div>
                                             <div className='form-content'>
-                                                <input type='text' name='title' placeholder="What's new ?"  onChange={handleChange} />
+                                                <input type='text' name='content' placeholder="What's new ?" onChange={handleChange} required />
                                             </div>
                                             <ul className='form-tag'>
                                                 <li>
-                                                    <input type='file' name='image' id='file-input' onChange={handleChange}/>
-                                                    
+                                                    <input type='file' name='image' id='file-input' onChange={handleChange} />
+
                                                     <label htmlFor='file-input'><CiImageOn /></label>
                                                 </li>
                                                 <li><MdOutlineGifBox /></li>
@@ -185,7 +214,7 @@ function LayoutDefault() {
                             </a>
                         </li>
                         <li>
-                            <span>Report a problem</span>
+                            <span><NavLink to='/report'>Report a problem</NavLink></span>
                         </li>
                     </ul>
                 </footer>
